@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WartungsApp</string>
+    <string name="placeholder">Text</string>
+    <string name="descriptionCardView">Image of the vehicle</string>
 </resources>
