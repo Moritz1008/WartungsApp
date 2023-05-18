@@ -11,40 +11,13 @@
         layout="@layout/toolbar"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/vehicleCardView"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="100dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/vehicles"
+        android:layout_width="410dp"
+        android:layout_height="554dp"
+        android:layout_marginTop="116dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="true">
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_marginBottom="0dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher_round"
-                android:contentDescription="@string/descriptionCardView"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder"
-                android:textSize="25sp"
-                android:layout_margin="10dp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                />
-
-        </RelativeLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
