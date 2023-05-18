@@ -29,10 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Vehicle> vehicles = new ArrayList<>();
 
-        vehicles.add(new Vehicle("Kawasaki ER-5", 62000, "https://de.wikipedia.org/wiki/Kawasaki_ER-5#/media/Datei:Kawasaki_ER-5_2.JPG"));
+        vehicles.add(new Vehicle("Kawasaki ER-5", 62000, "https://de.wikipedia.org/wiki/Kawasaki_ER-5#/media/Datei:Kawasaki_ER-5_2.jpg"));
         vehicles.add(new Vehicle("Opel Corsa D CRE", 160000, "https://www.autozeitung.de/assets/styles/article_image/public/field/image/opel-corsa-color-race-001.jpg"));
-        vehicles.add(new Vehicle("Kawasaki ER-5", 62000, "https://de.wikipedia.org/wiki/Kawasaki_ER-5#/media/Datei:Kawasaki_ER-5_2.JPG"));
-        vehicles.add(new Vehicle("Opel Corsa D CRE", 160000, "https://www.autozeitung.de/assets/styles/article_image/public/field/image/opel-corsa-color-race-001.jpg"));
+        vehicles.add(new Vehicle("Nissan 350Z", 80000, "https://upload.wikimedia.org/wikipedia/commons/e/e0/2003-2005_Nissan_350Z_%28Z33%29_roadster_01.jpg"));
 
 
         VehicleRecViewAdapter adapter = new VehicleRecViewAdapter(this);

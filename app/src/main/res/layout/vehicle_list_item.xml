@@ -17,22 +17,31 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/imgVehicle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="0dp"
+                android:layout_marginBottom="55dp"
                 android:contentDescription="@string/descriptionCardView"
-                android:src="@mipmap/ic_launcher_round"
-                android:id="@+id/imgVehicle"/>
+                android:src="@mipmap/ic_launcher_round" />
 
+            <TextView
+                android:id="@+id/txtVehicleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="25dp"
+                android:text="@string/placeholder"
+                android:textSize="25sp"
+                android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:layout_alignBottom="@id/txtVehicleName"
                 android:layout_margin="10dp"
-                android:text="@string/placeholder"
-                android:textSize="25sp"
-                android:id="@+id/txtVehicleName"/>
+                android:id="@+id/txtVehicleMileage"/>
 
         </RelativeLayout>
 

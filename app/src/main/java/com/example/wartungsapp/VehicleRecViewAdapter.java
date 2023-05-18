@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAdapter.ViewHolder>{
@@ -37,7 +39,8 @@ public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtVehicleName.setText(vehicles.get(position).getName());
-        holder.imgVehicle.setImageURI(Uri.parse(vehicles.get(position).getImageURL()));
+        holder.txtVehicleMileage.setText(String.valueOf(vehicles.get(position).getMileage()) + " km");
+        //holder.imgVehicle.setImageURI(Uri.parse(vehicles.get(position).getImageURL()));
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +48,11 @@ public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAd
                 Toast.makeText(context, vehicles.get(holder.getAbsoluteAdapterPosition()).getName() + " selected", Toast.LENGTH_SHORT).show();
             }
         });
+
+        Glide.with(context)
+                .asBitmap()
+                .load(vehicles.get(position).getImageURL())
+                .into(holder.imgVehicle);
     }
 
     @Override
@@ -61,17 +69,17 @@ public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAd
     // this class is going to hold the view for every item in the RecView
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private CardView vehicleCard;
         private TextView txtVehicleName;
+        private TextView txtVehicleMileage;
         private ImageView imgVehicle;
         private CardView card;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            vehicleCard = itemView.findViewById(R.id.vehicleCard);
             txtVehicleName = itemView.findViewById(R.id.txtVehicleName);
             imgVehicle = itemView.findViewById(R.id.imgVehicle);
             card = itemView.findViewById(R.id.vehicleCard);
+            txtVehicleMileage = itemView.findViewById(R.id.txtVehicleMileage);
         }
     }
 }
