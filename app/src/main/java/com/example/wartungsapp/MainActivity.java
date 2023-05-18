@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         vehicles.add(new Vehicle("Opel Corsa D CRE", 160000, "https://www.autozeitung.de/assets/styles/article_image/public/field/image/opel-corsa-color-race-001.jpg"));
 
 
-        VehicleRecViewAdapter adapter = new VehicleRecViewAdapter();
+        VehicleRecViewAdapter adapter = new VehicleRecViewAdapter(this);
         adapter.setVehicles(vehicles);
 
         vehiclesRecyclerView.setAdapter(adapter);

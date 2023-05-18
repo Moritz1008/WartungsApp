@@ -1,11 +1,14 @@
 package com.example.wartungsapp;
 
+import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -17,8 +20,10 @@ public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAd
 
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
 
-    public VehicleRecViewAdapter() {
+    private Context context;
 
+    public VehicleRecViewAdapter(Context context) {
+        this.context = context;
     }
 
     @NonNull
@@ -33,6 +38,13 @@ public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtVehicleName.setText(vehicles.get(position).getName());
         holder.imgVehicle.setImageURI(Uri.parse(vehicles.get(position).getImageURL()));
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, vehicles.get(holder.getAbsoluteAdapterPosition()).getName() + " selected", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -52,12 +64,14 @@ public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAd
         private CardView vehicleCard;
         private TextView txtVehicleName;
         private ImageView imgVehicle;
+        private CardView card;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             vehicleCard = itemView.findViewById(R.id.vehicleCard);
             txtVehicleName = itemView.findViewById(R.id.txtVehicleName);
             imgVehicle = itemView.findViewById(R.id.imgVehicle);
+            card = itemView.findViewById(R.id.vehicleCard);
         }
     }
 }
