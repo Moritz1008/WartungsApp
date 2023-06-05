@@ -5,6 +5,8 @@
     <string name="selectImage">Bild auswählen</string>
     <string name="createVehicleToolbarTitle">Fahrzeug hinzufügen</string>
     <string name="createVehicleName">Fahrzeugbezeichnung</string>
-    <string name="createVehicleMileageHint">z.B. 20.000</string>
-    <string name="createVehicleMonthlyMileageHint">z.b. 2.000</string>
+    <string name="createVehicleMileageText">Kilometerstand:</string>
+    <string name="createVehicleMileageHint">z.B. 20.000 km</string>
+    <string name="createVehicleMonthlyMileageText">Monatliche Fahrleistung:</string>
+    <string name="createVehicleMonthlyMileageHint">z.B. 2.000 km</string>
 </resources>
