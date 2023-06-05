@@ -24,7 +24,8 @@ import java.util.Locale;
 public class CreateVehicleActivity extends AppCompatActivity {
 
     ActivityResultLauncher<String> takeImage;
-    public EditText editTextMileage;
+    EditText editTextMileage;
+    EditText editTextMonthlyMileage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,10 @@ public class CreateVehicleActivity extends AppCompatActivity {
         });
 
         editTextMileage = findViewById(R.id.editTextMileage);
-        editTextMileage.addTextChangedListener(onTextChangedListener());
+        editTextMileage.addTextChangedListener(onTextChangedListener(editTextMileage));
+
+        editTextMonthlyMileage = findViewById(R.id.editTextMonthlyMileage);
+        editTextMonthlyMileage.addTextChangedListener(onTextChangedListener(editTextMonthlyMileage));
     }
 
     @Override
@@ -78,7 +82,7 @@ public class CreateVehicleActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private TextWatcher onTextChangedListener() {
+    private TextWatcher onTextChangedListener(EditText editText) {
         return new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -90,7 +94,7 @@ public class CreateVehicleActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                editTextMileage.removeTextChangedListener(this);
+                editText.removeTextChangedListener(this);
 
                 try {
                     String originalString = s.toString();
@@ -108,13 +112,13 @@ public class CreateVehicleActivity extends AppCompatActivity {
 
 
                     //setting text after format to EditText
-                    editTextMileage.setText(formattedString);
-                    editTextMileage.setSelection(editTextMileage.getText().length());
+                    editText.setText(formattedString);
+                    editText.setSelection(editText.getText().length());
                 } catch (NumberFormatException nfe) {
                     nfe.printStackTrace();
                 }
 
-                editTextMileage.addTextChangedListener(this);
+                editText.addTextChangedListener(this);
             }
         };
     }
