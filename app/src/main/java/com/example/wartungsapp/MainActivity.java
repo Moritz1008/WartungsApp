@@ -6,16 +6,23 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView vehiclesRecyclerView;
+    private FloatingActionButton fab;
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         vehiclesRecyclerView = findViewById(R.id.vehicles);
+        fab = findViewById(R.id.fabAddVehicle);
 
         ArrayList<Vehicle> vehicles = new ArrayList<>();
 
@@ -39,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
         vehiclesRecyclerView.setAdapter(adapter);
         vehiclesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent i = new Intent(context, CreateVehicleActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

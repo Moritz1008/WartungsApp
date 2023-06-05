@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">WartungsApp</string>
     <string name="placeholder">Text</string>
-    <string name="descriptionCardView">Image of the vehicle</string>
+    <string name="descriptionCardView">Bild des Fahrzeugs</string>
+    <string name="selectImage">Bild auswählen</string>
+    <string name="createVehicleToolbarTitle">Fahrzeug hinzufügen</string>
+    <string name="createVehicleName">Fahrzeugbezeichnung</string>
+    <string name="createVehicleMileageHint">z.B. 20.000</string>
+    <string name="createVehicleMonthlyMileageHint">z.b. 2.000</string>
 </resources>
