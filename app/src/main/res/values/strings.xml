@@ -9,4 +9,5 @@
     <string name="createVehicleMileageHint">z.B. 20.000 km</string>
     <string name="createVehicleMonthlyMileageText">Monatliche Fahrleistung:</string>
     <string name="createVehicleMonthlyMileageHint">z.B. 2.000 km</string>
+    <string name="saveButtonText">Speichern</string>
 </resources>

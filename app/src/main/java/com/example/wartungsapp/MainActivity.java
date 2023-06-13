@@ -20,9 +20,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ArrayList<Vehicle> vehicles;
     private RecyclerView vehiclesRecyclerView;
     private FloatingActionButton fab;
     private Context context = this;
+    private VehicleRecViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +37,15 @@ public class MainActivity extends AppCompatActivity {
         vehiclesRecyclerView = findViewById(R.id.vehicles);
         fab = findViewById(R.id.fabAddVehicle);
 
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        vehicles = new ArrayList<>();
 
-        vehicles.add(new Vehicle("Kawasaki ER-5", 62000, "https://de.wikipedia.org/wiki/Kawasaki_ER-5#/media/Datei:Kawasaki_ER-5_2.jpg"));
-        vehicles.add(new Vehicle("Opel Corsa D CRE", 160000, "https://www.autozeitung.de/assets/styles/article_image/public/field/image/opel-corsa-color-race-001.jpg"));
-        vehicles.add(new Vehicle("Nissan 350Z", 80000, "https://upload.wikimedia.org/wikipedia/commons/e/e0/2003-2005_Nissan_350Z_%28Z33%29_roadster_01.jpg"));
+        vehicles.add(new Vehicle("Kawasaki ER-5", 62000, 2000, null ));
+        vehicles.add(new Vehicle("Opel Corsa D CRE", 16000, 2000, null));
+        vehicles.add(new Vehicle("Nissan 350Z", 80000, 2000, null));
 
 
-        VehicleRecViewAdapter adapter = new VehicleRecViewAdapter(this);
+        //VehicleRecViewAdapter adapter = new VehicleRecViewAdapter(this);
+        adapter = new VehicleRecViewAdapter(this);
         adapter.setVehicles(vehicles);
 
         vehiclesRecyclerView.setAdapter(adapter);
@@ -55,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        adapter.setVehicles(vehicles);
     }
 
     @Override
@@ -76,5 +84,13 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Hello from Item 2", Toast.LENGTH_SHORT).show();
         }
         return true;
+    }
+
+    public ArrayList<Vehicle> getVehicleList() {
+        return vehicles;
+    }
+
+    public void addVehicle(Vehicle newVehicle) {
+        vehicles.add(newVehicle);
     }
 }

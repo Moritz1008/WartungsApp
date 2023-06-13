@@ -1,16 +1,29 @@
 package com.example.wartungsapp;
 
+import android.net.Uri;
+import android.widget.Toast;
+
 public class Vehicle {
+
+    private MainActivity mainActivity;
     private String name;
     private int mileage;
-    private String imageURL;
+    private int monthlyMileage;
+    private Uri imageURI;
 
-    public Vehicle(String name, int mileage, String imageURL) {
+    public Vehicle(String name, int mileage, int monthlyMileage,  Uri imageURI) {
+        this.mainActivity = new MainActivity();
         this.name = name;
         this.mileage = mileage;
-        this.imageURL = imageURL;
+        this.monthlyMileage = monthlyMileage;
+        this.imageURI = imageURI;
     }
 
+    public void save() {
+        //TODO: save current instance
+        Toast.makeText(mainActivity, this.toString(), Toast.LENGTH_SHORT).show();
+        mainActivity.addVehicle(this);
+    }
 
     // just created these, might delete some later if not needed
     public String getName() {
@@ -29,12 +42,12 @@ public class Vehicle {
         this.mileage = mileage;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public Uri getImageURI() {
+        return imageURI;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setImageURI(Uri imageURL) {
+        this.imageURI = imageURI;
     }
 
     @Override
@@ -42,7 +55,8 @@ public class Vehicle {
         return "Vehicle{" +
                 "name='" + name + '\'' +
                 ", mileage=" + mileage +
-                ", imageURL='" + imageURL + '\'' +
+                ", monthlyMileage=" + monthlyMileage +
+                ", imageURI='" + imageURI + '\'' +
                 '}';
     }
 }

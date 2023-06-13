@@ -1,5 +1,6 @@
 package com.example.wartungsapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,8 +9,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -23,14 +27,21 @@ import java.util.Locale;
 
 public class CreateVehicleActivity extends AppCompatActivity {
 
-    ActivityResultLauncher<String> takeImage;
-    EditText editTextMileage;
-    EditText editTextMonthlyMileage;
+    private MainActivity mainActivity;
+    private EditText editTextVehicleName;
+    private ActivityResultLauncher<String> takeImage;
+    private Uri imageURI;
+    private EditText editTextMileage;
+    private EditText editTextMonthlyMileage;
+    private Button saveButton;
+    private Vehicle newVehicle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vehicle);
+
+        this.mainActivity = new MainActivity();
 
         Intent i = getIntent();
 
@@ -53,7 +64,7 @@ public class CreateVehicleActivity extends AppCompatActivity {
                     @Override
                     public void onActivityResult(Uri result) {
                         ImageViewVehicle.setImageURI(result);
-                        Log.d("debug house cheese", result.toString());
+                        imageURI = result;
                     }
                 }
         );
@@ -65,11 +76,30 @@ public class CreateVehicleActivity extends AppCompatActivity {
             }
         });
 
+        editTextVehicleName = findViewById(R.id.editTextVehicleName);
+
         editTextMileage = findViewById(R.id.editTextMileage);
         editTextMileage.addTextChangedListener(onTextChangedListener(editTextMileage));
 
         editTextMonthlyMileage = findViewById(R.id.editTextMonthlyMileage);
         editTextMonthlyMileage.addTextChangedListener(onTextChangedListener(editTextMonthlyMileage));
+
+        saveButton = findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String name = editTextVehicleName.getText().toString();
+                        int mileage = Integer.parseInt(editTextMileage.getText().toString().replaceAll("\\.", ""));
+                        int monthlyMileage = Integer.parseInt(editTextMonthlyMileage.getText().toString().replaceAll("\\.", ""));
+                        newVehicle = new Vehicle(name, mileage, monthlyMileage, imageURI);
+
+                        Toast.makeText(CreateVehicleActivity.this, newVehicle.toString(), Toast.LENGTH_SHORT).show();
+
+                        newVehicle.save();
+                    }
+                }
+        );
     }
 
     @Override

@@ -51,7 +51,7 @@ public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAd
 
         Glide.with(context)
                 .asBitmap()
-                .load(vehicles.get(position).getImageURL())
+                .load(vehicles.get(position).getImageURI())
                 .into(holder.imgVehicle);
     }
 
