@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Vehicle> vehicles;
     private RecyclerView vehiclesRecyclerView;
     private FloatingActionButton fab;
-    private Context context = this;
     private VehicleRecViewAdapter adapter;
 
     @Override
@@ -37,16 +37,11 @@ public class MainActivity extends AppCompatActivity {
         vehiclesRecyclerView = findViewById(R.id.vehicles);
         fab = findViewById(R.id.fabAddVehicle);
 
-        vehicles = new ArrayList<>();
-
-        vehicles.add(new Vehicle("Kawasaki ER-5", 62000, 2000, null ));
-        vehicles.add(new Vehicle("Opel Corsa D CRE", 16000, 2000, null));
-        vehicles.add(new Vehicle("Nissan 350Z", 80000, 2000, null));
-
+        VehicleDataHolder dataHolder = VehicleDataHolder.getInstance();
 
         //VehicleRecViewAdapter adapter = new VehicleRecViewAdapter(this);
         adapter = new VehicleRecViewAdapter(this);
-        adapter.setVehicles(vehicles);
+        adapter.setVehicles(dataHolder.getVehicles());
 
         vehiclesRecyclerView.setAdapter(adapter);
         vehiclesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -54,15 +49,19 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Intent i = new Intent(context, CreateVehicleActivity.class);
+                Intent i = new Intent(MainActivity.this, CreateVehicleActivity.class);
                 startActivity(i);
             }
         });
-    }
-    @Override
-    protected void onResume(){
-        super.onResume();
-        adapter.setVehicles(vehicles);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            Vehicle newVehicle = intent.getParcelableExtra("newVehicle");
+            if (newVehicle != null) {
+                dataHolder.addVehicle(newVehicle);
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         return vehicles;
     }
 
-    public void addVehicle(Vehicle newVehicle) {
+    public void addVehicle(Vehicle newVehicle) {    // deprecated
         vehicles.add(newVehicle);
     }
 }

@@ -94,9 +94,11 @@ public class CreateVehicleActivity extends AppCompatActivity {
                         int monthlyMileage = Integer.parseInt(editTextMonthlyMileage.getText().toString().replaceAll("\\.", ""));
                         newVehicle = new Vehicle(name, mileage, monthlyMileage, imageURI);
 
-                        Toast.makeText(CreateVehicleActivity.this, newVehicle.toString(), Toast.LENGTH_SHORT).show();
+                        //newVehicle.save();
+                        Intent intent = new Intent(CreateVehicleActivity.this, MainActivity.class);
+                        intent.putExtra("newVehicle", newVehicle);
 
-                        newVehicle.save();
+                        startActivity(intent);
                     }
                 }
         );

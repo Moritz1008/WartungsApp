@@ -2,6 +2,7 @@ package com.example.wartungsapp;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +39,10 @@ public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d("vehicles.toString()", vehicles.toString());
+        Log.d("vehicles.size()", String.valueOf(vehicles.size()));
         holder.txtVehicleName.setText(vehicles.get(position).getName());
         holder.txtVehicleMileage.setText(String.valueOf(vehicles.get(position).getMileage()) + " km");
-        //holder.imgVehicle.setImageURI(Uri.parse(vehicles.get(position).getImageURL()));
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
