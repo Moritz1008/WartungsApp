@@ -9,9 +9,9 @@ public class VehicleDataHolder {
     private VehicleDataHolder() {
         vehicles = new ArrayList<>();
 
-        this.addVehicle(new Vehicle("Kawasaki ER-5", 62000, 2000, null ));
-        this.addVehicle(new Vehicle("Opel Corsa D CRE", 16000, 2000, null));
-        this.addVehicle(new Vehicle("Nissan 350Z", 80000, 2000, null));
+        // this.addVehicle(new Vehicle("Kawasaki ER-5", 62000, 2000, null ));
+        // this.addVehicle(new Vehicle("Opel Corsa D CRE", 16000, 2000, null));
+        // this.addVehicle(new Vehicle("Nissan 350Z", 80000, 2000, null));
     }
 
 

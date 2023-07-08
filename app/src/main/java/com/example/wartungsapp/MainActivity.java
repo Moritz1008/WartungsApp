@@ -6,10 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        vehiclesRecyclerView = findViewById(R.id.vehicles);
+        vehiclesRecyclerView = findViewById(R.id.recViewVehicles);
         fab = findViewById(R.id.fabAddVehicle);
 
         VehicleDataHolder dataHolder = VehicleDataHolder.getInstance();

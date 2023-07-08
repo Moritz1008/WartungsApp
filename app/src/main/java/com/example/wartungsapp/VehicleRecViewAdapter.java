@@ -39,8 +39,6 @@ public class VehicleRecViewAdapter extends RecyclerView.Adapter<VehicleRecViewAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Log.d("vehicles.toString()", vehicles.toString());
-        Log.d("vehicles.size()", String.valueOf(vehicles.size()));
         holder.txtVehicleName.setText(vehicles.get(position).getName());
         holder.txtVehicleMileage.setText(String.valueOf(vehicles.get(position).getMileage()) + " km");
 
